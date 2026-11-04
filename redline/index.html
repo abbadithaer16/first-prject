@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="lock">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Redline · Seats to Mars</title>
+<meta name="description" content="Redline sells seats to Mars: a 259-day crossing, four landing sites and a season on the surface.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--red:#e8283c;--deep:#2a0d04}
+:root{--red:#e8283c;--deep:#2a0d04;--warm:#fff4e6;--ink:#2b1a12}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--deep);color:#fff;font-family:Montserrat,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+html{background:var(--deep)}
+body{background:var(--deep);color:#fff;font-family:Montserrat,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html.lock,html.lock body{overflow:hidden;height:100%}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.hero{position:fixed;inset:0;overflow:hidden;background:radial-gradient(58% 72% at 50% 47%,#d0591f 0%,#a23f12 32%,#6b2409 62%,#3b1405 100%)}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* ================= HERO ================= */
+.hero{position:relative;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(58% 72% at 50% 47%,#d0591f 0%,#a23f12 32%,#6b2409 62%,#3b1405 100%)}
 .hero>*{position:absolute}
 
 #word0{left:50%;top:50%;font-weight:900;font-size:min(27vw,50vh);line-height:.8;letter-spacing:-.035em;white-space:nowrap;z-index:2;will-change:transform,clip-path}
@@ -23,8 +29,8 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;backgroun
 #flare{z-index:1;width:44vmin;height:44vmin;margin:-22vmin;border-radius:50%;pointer-events:none;background:radial-gradient(closest-side,rgba(255,236,205,.95),rgba(255,176,96,.42) 26%,rgba(255,140,60,.1) 58%,transparent)}
 
 #pin{z-index:6;left:0;top:0;display:flex;align-items:center;gap:9px;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;white-space:nowrap}
-#pin i{width:12px;height:12px;border-radius:50%;background:#fff;position:relative;box-shadow:0 0 0 4px rgba(232,40,60,.75)}
-#pin i::after{content:"";position:absolute;inset:-13px;border-radius:50%;border:1px solid #fff;animation:pulse 2s ease-out infinite}
+#pin i,.pdot{width:12px;height:12px;border-radius:50%;background:#fff;position:relative;box-shadow:0 0 0 4px rgba(232,40,60,.75)}
+#pin i::after,.pdot::after{content:"";position:absolute;inset:-13px;border-radius:50%;border:1px solid #fff;animation:pulse 2s ease-out infinite}
 @keyframes pulse{from{transform:scale(.4);opacity:1}to{transform:scale(1.4);opacity:0}}
 
 #word1{left:50%;top:0;z-index:6;font-weight:800;font-size:min(9.4vw,19vh);letter-spacing:-.02em;line-height:1;color:rgba(255,255,255,.74);pointer-events:none;white-space:nowrap}
@@ -49,15 +55,16 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;backgroun
 #fog{inset:0;z-index:11;pointer-events:none;background:radial-gradient(70% 64% at 50% 46%,#fbe6cd 0%,#f6d3ae 52%,#b36a37 100%)}
 
 #scrim{left:0;right:0;top:0;height:150px;z-index:13;pointer-events:none;background:linear-gradient(rgba(44,14,3,.62),rgba(44,14,3,0))}
-#bar{left:50%;bottom:7.5vh;z-index:12;width:min(86vw,920px);display:grid;grid-template-columns:1fr 1fr 1fr 68px;background:#fff;color:#2b1a12;border-radius:3px;box-shadow:0 24px 60px rgba(30,6,0,.5)}
-#bar div{padding:15px 22px;border-right:1px solid #eadfd6}
-#bar label{display:block;font-weight:500;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#9a877b}
-#bar input{width:100%;margin-top:5px;border:0;outline:0;font:600 15px Montserrat,sans-serif;color:#2b1a12;background:none}
-#bar button{background:var(--red);color:#fff;border-radius:0 3px 3px 0;font-size:22px;transition:background .25s}
-#bar button:hover{background:#c41426}
+.bar{display:grid;grid-template-columns:1fr 1fr 1fr 68px;background:#fff;color:var(--ink);border-radius:3px;box-shadow:0 24px 60px rgba(30,6,0,.5)}
+#bar{left:50%;bottom:7.5vh;z-index:12;width:min(86vw,920px)}
+.bar div{padding:15px 22px;border-right:1px solid #eadfd6}
+.bar label{display:block;font-weight:500;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#9a877b}
+.bar input,.bar select{width:100%;margin-top:5px;border:0;outline:0;font:600 15px Montserrat,sans-serif;color:var(--ink);background:none;-webkit-appearance:none;appearance:none;border-radius:0;cursor:pointer}
+.bar button{background:var(--red);color:#fff;border-radius:0 3px 3px 0;font-size:22px;transition:background .25s}
+.bar button:hover{background:#c41426}
 
 /* chrome */
-header{left:0;right:0;top:0;z-index:20;display:flex;align-items:center;padding:clamp(18px,3.2vh,30px) clamp(20px,2.6vw,42px);font-size:11.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;pointer-events:none}
+header{position:fixed;left:0;right:0;top:0;z-index:20;display:flex;align-items:center;padding:clamp(18px,3.2vh,30px) clamp(20px,2.6vw,42px);font-size:11.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;pointer-events:none}
 header>*{pointer-events:auto}
 .logo{display:flex;align-items:center;gap:12px;margin-right:auto;font-weight:800;font-size:19px;letter-spacing:-.01em;text-transform:none}
 .logo svg{width:34px;height:30px}
@@ -67,13 +74,130 @@ header a:hover{opacity:1}
 .ico:hover{background:rgba(255,255,255,.34)}
 .ico svg,.srch svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
 .srch{margin-left:clamp(16px,2.6vw,38px)}
-#rail{left:clamp(20px,2.6vw,42px);top:50%;z-index:20;display:grid;gap:15px;transform:translateY(-50%)}
+#topfade{position:fixed;left:0;right:0;top:0;height:130px;z-index:19;pointer-events:none;opacity:0;background:linear-gradient(rgba(42,13,4,.78),rgba(42,13,4,0))}
+#rail{position:fixed;left:clamp(20px,2.6vw,42px);top:50%;z-index:20;display:grid;gap:15px;transform:translateY(-50%)}
 #rail button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s,transform .3s}
 #rail button.on{background:#fff;transform:scale(1.35)}
+#rail button:nth-child(4){margin-top:10px}
 #hint{left:50%;bottom:4.4vh;transform:translateX(-50%);z-index:7;font-weight:400;font-size:11px;letter-spacing:.17em;text-transform:uppercase;opacity:.8;white-space:nowrap}
+
+/* ================= SHARED ================= */
+.pinsec{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.label{font-weight:300;font-size:clamp(13px,1.2vw,18px);letter-spacing:.1em;text-transform:uppercase}
+.btn{display:inline-block;background:var(--red);color:#fff;font-weight:600;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:11px 18px;border-radius:2px;box-shadow:0 8px 18px rgba(120,10,20,.45);transition:background .25s}
+.btn:hover{background:#c41426}
+.note em{display:block;font-style:normal;font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:7px}
+.note{font-size:15px;line-height:1.6;color:rgba(255,244,230,.84)}
+
+/* ================= CROSSING ================= */
+.cross{background:radial-gradient(55% 70% at 68% 50%,#5a1f08 0%,#3b1405 48%,#2a0d04 100%)}
+.cx-copy{position:absolute;left:clamp(64px,8vw,150px);top:50%;transform:translateY(-50%);z-index:3}
+.cx-days{display:block;font-weight:900;font-size:min(15vw,28vh);line-height:.8;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin:.14em 0 .12em -.05em}
+.cx-unit{font-weight:300;font-size:clamp(16px,1.6vw,26px);letter-spacing:.06em;text-transform:uppercase}
+.cx-notes{position:relative;margin-top:clamp(28px,5.5vh,60px);height:7em;width:min(30ch,34vw)}
+.cx-notes p{position:absolute;left:0;top:0}
+.cx-orbits{position:absolute;left:44%;top:0;width:56%;height:100%;overflow:visible}
+.orb{fill:none;stroke:rgba(255,255,255,.2);stroke-width:1;vector-effect:non-scaling-stroke}
+.cx-ghost{fill:none;stroke:rgba(255,255,255,.22);stroke-width:1;stroke-dasharray:1 7;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.cx-trail{fill:none;stroke:var(--red);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 6px rgba(232,40,60,.7))}
+.cx-sun{position:absolute;left:0;top:0;width:34vmin;height:34vmin;margin:-17vmin;border-radius:50%;pointer-events:none;background:radial-gradient(closest-side,rgba(255,240,215,1),rgba(255,176,96,.5) 20%,rgba(255,140,60,.12) 52%,transparent)}
+.body{position:absolute;left:0;top:0;width:var(--d);height:var(--d);z-index:2;will-change:transform}
+.body i{display:block;width:100%;height:100%;border-radius:50%}
+.body span{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.cx-earth{--d:10px}.cx-earth i{background:#fff4e6;box-shadow:0 0 14px rgba(255,244,230,.7)}
+.cx-mars{--d:18px}.cx-mars span{left:auto;right:calc(100% + 12px)}.cx-mars i{background:radial-gradient(circle at 35% 35%,#f09a5c,#b4471a 70%);box-shadow:0 0 18px rgba(240,120,60,.6)}
+.cx-ship{--d:12px}
+
+/* ================= PLACES ================= */
+.places{background:var(--deep)}
+.pl-map{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.pl-map img,.pl-map .pl-copy{position:absolute;top:0;height:100%;-webkit-mask-image:linear-gradient(transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(transparent,#000 7%,#000 93%,transparent);filter:saturate(1.15) brightness(.82) contrast(1.06)}
+.pl-tint{position:absolute;inset:0;background:#b4471a;mix-blend-mode:multiply;opacity:.42;pointer-events:none}
+.pl-pins{position:absolute;top:0;height:100%}
+.pl-pin{position:absolute;width:12px;height:12px;transform:translate(-50%,-50%)}
+.pl-pin i{position:absolute;inset:2px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.22);transition:inset .3s}
+.pl-pin span{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;opacity:.7;transition:opacity .3s}
+.pl-pin.on i{inset:0;box-shadow:0 0 0 4px rgba(232,40,60,.75)}
+.pl-pin.on i::after{content:"";position:absolute;inset:-13px;border-radius:50%;border:1px solid #fff;animation:pulse 2s ease-out infinite}
+.pl-pin.on span{opacity:1}
+.pl-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(42,13,4,.82),rgba(42,13,4,0) 42%),linear-gradient(90deg,rgba(42,13,4,0) 58%,rgba(42,13,4,.7)),linear-gradient(rgba(42,13,4,.55),rgba(42,13,4,0) 22%)}
+.pl-label{position:absolute;left:clamp(64px,8vw,150px);top:clamp(96px,15vh,150px)}
+.pl-label span{font-weight:600;margin-left:14px;font-variant-numeric:tabular-nums}
+.pl-name{position:absolute;left:clamp(64px,8vw,150px);bottom:9vh;display:grid;overflow:hidden;padding-bottom:.06em;max-width:58vw}
+.pl-name span{grid-area:1/1;align-self:end;font-weight:900;font-size:min(7.2vw,15vh);line-height:.88;letter-spacing:-.03em;text-transform:uppercase;color:var(--warm);transform:translateY(105%);opacity:0;transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .45s}
+.pl-name span.on{transform:none;opacity:1}
+.pl-name span.gone{transform:translateY(-105%)}
+.pl-info{position:absolute;right:6.2%;top:50%;transform:translateY(-50%);width:clamp(240px,23vw,350px)}
+.pl-photo{position:relative;aspect-ratio:1.42;border-radius:3px;box-shadow:0 22px 44px rgba(20,4,0,.45);overflow:hidden;background:#6b2409}
+.pl-photo div{position:absolute;inset:0;background-repeat:no-repeat;opacity:0;transform:scale(1.06);transition:opacity .6s,transform 1.2s cubic-bezier(.16,1,.3,1)}
+.pl-photo div.on{opacity:1;transform:none}
+.pl-text{margin-top:22px;min-height:9.5em}
+.pl-text.swap{animation:swap .6s ease-out}
+@keyframes swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pl-coord{font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px}
+.pl-info .btn{margin-top:16px}
+
+/* ================= ABOARD ================= */
+.aboard{position:relative;padding:22vh clamp(64px,8vw,150px) 18vh;background:linear-gradient(var(--deep),#3b1405 60%,var(--deep))}
+.ab-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;margin-bottom:9vh}
+.ab-title{margin-top:18px;font-weight:800;font-size:clamp(36px,5.4vw,92px);line-height:.98;letter-spacing:-.025em;max-width:13ch}
+.ab-head .note{max-width:32ch;padding-bottom:.6em}
+.ab-rows{list-style:none;border-top:1px solid rgba(255,255,255,.22)}
+.ab-rows li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:40px;padding:clamp(22px,4.4vh,44px) 0;border-bottom:1px solid rgba(255,255,255,.22);will-change:clip-path}
+.ab-rows b{font-weight:900;font-size:clamp(72px,10.5vw,184px);line-height:.82;letter-spacing:-.045em;white-space:nowrap}
+.ab-rows b small{font-size:.36em;font-weight:800;letter-spacing:-.01em;margin-left:.12em}
+.ab-rows .note{max-width:34ch}
+
+/* ================= STAY ================= */
+.stay{background:#6b2409}
+.st-land,.st-fore{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;will-change:transform}
+.st-land{background-position:50% 60%}
+.st-fore{background-position:50% 100%;transform-origin:50% 100%}
+.st-word{position:absolute;left:0;right:0;top:16%;text-align:center;will-change:transform}
+.st-word small{display:block;font-weight:300;font-size:min(3.6vw,7.4vh);letter-spacing:.06em;text-transform:uppercase}
+.st-word b{display:block;font-weight:900;font-size:min(24vw,42vh);line-height:.84;letter-spacing:-.04em;color:var(--warm)}
+.st-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(42,13,4,.88),rgba(42,13,4,.4) 30%,rgba(42,13,4,0) 52%)}
+.st-notes{position:absolute;left:clamp(64px,8vw,150px);right:clamp(64px,8vw,150px);bottom:9vh;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,70px)}
+.st-notes p{border-top:1px solid rgba(255,255,255,.4);padding-top:18px}
+
+/* ================= WINDOWS ================= */
+.windows{position:relative;padding:20vh clamp(64px,8vw,150px) 22vh;background:var(--deep)}
+.wn-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px clamp(30px,6vw,110px)}
+.wn-title{margin-top:18px;font-weight:900;font-size:min(13vw,24vh);line-height:.82;letter-spacing:-.04em}
+.wn-head .note{max-width:34ch;min-width:240px;padding-bottom:.4em}
+.wn-track{position:relative;height:1px;margin:13vh 0 0;background:rgba(255,255,255,.18)}
+.wn-track i{position:absolute;inset:0;background:#fff;transform-origin:0 50%;transform:scaleX(0)}
+.wn-list{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,70px)}
+.wn-list li{position:relative;padding-top:42px}
+.wn-dot{position:absolute;left:0;top:-5px;width:9px;height:9px;border-radius:50%;background:#fff;transform:scale(0);transition:transform .5s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.wn-list li.lit .wn-dot{transform:scale(1.5);box-shadow:0 0 0 7px rgba(255,255,255,.2)}
+.wn-list li>*:not(.wn-dot){opacity:0;transform:translateY(16px);transition:opacity .6s,transform .8s cubic-bezier(.16,1,.3,1)}
+.wn-list li.lit>*:not(.wn-dot){opacity:1;transform:none}
+.wn-list li.lit>b{transition-delay:.05s}.wn-list li.lit>p{transition-delay:.12s}.wn-list li.lit>.btn{transition-delay:.2s}
+.wn-list b{display:block;font-weight:800;font-size:clamp(34px,4vw,64px);line-height:1;letter-spacing:-.02em}
+.wn-list p{margin-top:12px}
+.wn-seats{font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.wn-seats i{display:block;height:3px;margin-top:10px;background:rgba(255,255,255,.18);border-radius:2px;width:min(220px,100%);overflow:hidden}
+.wn-seats i::before{content:"";display:block;height:100%;width:var(--f);background:var(--red)}
+.wn-list .btn{margin-top:24px}
+
+/* ================= BOOK ================= */
+.book{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;padding:24vh clamp(64px,8vw,150px) 0;background:radial-gradient(58% 72% at 50% 100%,#d0591f 0%,#a23f12 32%,#6b2409 62%,#3b1405 100%)}
+.bk-copy{position:relative;z-index:2;text-align:center;max-width:760px;margin:0 auto}
+.bk-title{margin-top:18px;font-weight:800;font-size:clamp(40px,5.6vw,96px);line-height:.98;letter-spacing:-.025em}
+.bk-copy .note{max-width:44ch;margin:22px auto 0}
+.bk-bar{position:relative;z-index:3;width:min(86vw,920px);margin:7vh auto 0}
+.bk-done{position:relative;z-index:3;min-height:3em;margin:22px auto 0;text-align:center;font-weight:500;font-size:14px;letter-spacing:.02em;max-width:56ch}
+.bk-word{position:relative;z-index:1;margin-top:2vh;text-align:center;font-weight:900;font-size:min(26vw,50vh);line-height:.8;letter-spacing:-.04em;white-space:nowrap;pointer-events:none;will-change:transform}
+footer{position:relative;z-index:4;display:flex;flex-wrap:wrap;align-items:center;gap:14px clamp(18px,3vw,44px);padding:30px clamp(20px,2.6vw,42px);background:var(--deep);font-size:11.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+footer .logo{margin-right:auto}
+footer a:not(.logo){opacity:.82;transition:opacity .2s}footer a:not(.logo):hover{opacity:1}
+footer small{width:100%;font-size:11px;font-weight:400;letter-spacing:.04em;text-transform:none;opacity:.6}
 
 @media (max-width:760px){
   header a{display:none}
+  header .logo{display:flex}
   #word0{font-size:29vw}
   #eyebrow{font-size:12px}
   #word1{font-size:15vw}
@@ -81,17 +205,62 @@ header a:hover{opacity:1}
   #card{right:auto;left:18px;top:auto!important;bottom:11vh;width:42vw}
   #card a{left:8px;bottom:8px}
   #dest b{font-size:11vw}#dest small{font-size:7vw}
-  #bar{grid-template-columns:1fr 1fr;width:calc(100vw - 32px);bottom:4vh}
-  #bar div:nth-child(2){border-right:0}
-  #bar div{padding:11px 14px;border-bottom:1px solid #eadfd6}
-  #bar button{height:46px;border-radius:0 0 3px 0}
+  .bar{grid-template-columns:1fr 1fr}
+  #bar{width:calc(100vw - 32px);bottom:4vh}
+  .bar div:nth-child(2){border-right:0}
+  .bar div{padding:11px 14px;border-bottom:1px solid #eadfd6}
+  .bar button{height:46px;border-radius:0 0 3px 0}
   #hint,#rail{display:none}
   #fore{background-size:210% auto}
+
+  .cx-copy{left:22px;right:22px;top:13vh;transform:none}
+  .cx-days{font-size:28vw}
+  .cx-notes{width:auto;height:6.4em;margin-top:18px}
+  .cx-orbits{left:0;width:100%;top:34%;height:66%}
+  .cx-mars span{left:calc(100% + 12px);right:auto}
+  .note{font-size:14px}
+  .pl-label{left:22px;top:92px}
+  .pl-name{left:22px;right:22px;bottom:auto;top:126px;max-width:none}
+  .pl-name span{font-size:12vw}
+  .pl-info{left:22px;right:22px;top:auto;bottom:4vh;transform:none;width:auto;display:grid;grid-template-columns:34vw 1fr;gap:16px;align-items:start}
+  .pl-text{margin-top:0;min-height:0}
+  .pl-desc{font-size:13px;line-height:1.5}
+  .pl-info .btn{margin-top:10px}
+  .aboard{padding:16vh 22px 12vh}
+  .ab-head{grid-template-columns:1fr;gap:18px}
+  .ab-rows li{grid-template-columns:1fr;gap:12px}
+  .ab-rows b{font-size:22vw}
+  .stay .st-fore{background-size:210% auto}
+  .st-word{top:20%}
+  .st-notes{left:22px;right:22px;bottom:5vh;grid-template-columns:1fr;gap:16px}
+  .st-notes p{padding-top:10px;font-size:13px}
+  .windows{padding:16vh 22px}
+  .wn-head{grid-template-columns:1fr;gap:20px}
+  .wn-title{font-size:17vw}
+  .wn-track{display:none}
+  .wn-list{grid-template-columns:1fr;gap:44px;margin-top:9vh;border-left:1px solid rgba(255,255,255,.22);padding-left:24px}
+  .wn-list li{padding-top:0}
+  .wn-dot{left:-29px;top:14px}
+  .book{padding:18vh 22px 0}
+  .bk-bar{width:100%}
+  .bk-word{font-size:27vw}
 }
 </style>
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }</script>
 </head>
 <body>
+<header>
+  <a class="logo" href="#" id="home" style="margin-left:0;opacity:1"><svg viewBox="0 0 34 30" fill="none" stroke="#fff" stroke-linecap="round"><path stroke-width="3.2" d="M3 27C5 13 15 4 31 3"/><path stroke-width="2" d="M11 27c1.500-8 8-14 18-15"/><circle cx="30" cy="20" r="3.500" fill="#fff" stroke="none"/></svg>Redline</a>
+  <a href="#">Login</a><a href="#">Sign up</a>
+  <span class="srch"><svg viewBox="0 0 24 24"><circle cx="10.500" cy="10.500" r="6.500"/><path d="m15.500 15.500 5 5"/></svg></span>
+  <button class="ico" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M5 8h14M7 12h10M5 16h14"/></svg></button>
+</header>
+<div id="topfade"></div>
+<nav id="rail" aria-label="Sections">
+  <button aria-label="Mars"></button><button aria-label="Tharsis"></button><button aria-label="Destination"></button>
+  <button aria-label="The crossing" data-to="crossing"></button><button aria-label="Landing sites" data-to="places"></button><button aria-label="On board" data-to="aboard"></button><button aria-label="The stay" data-to="stay"></button><button aria-label="Launch windows" data-to="windows"></button><button aria-label="Book" data-to="book"></button>
+</nav>
+
 <main class="hero" id="hero">
 <div id="word0">MARS</div>
 <div id="eyebrow">Book your seat to</div>
@@ -108,21 +277,121 @@ header a:hover{opacity:1}
 <div id="fore"></div>
 <div id="fog"></div>
 <div id="scrim"></div>
-<form id="bar" onsubmit="return false">
+<form id="bar" class="bar" onsubmit="return false">
   <div><label for="d1">Depart Earth</label><input id="d1" value="12 Mar 2041"></div>
   <div><label for="d2">Return</label><input id="d2" value="30 Sep 2042"></div>
   <div><label for="d3">Passengers</label><input id="d3" value="2 adults"></div>
   <button aria-label="Search seats">→</button>
 </form>
-<header>
-  <a class="logo" href="#" id="home" style="margin-left:0;opacity:1"><svg viewBox="0 0 34 30" fill="none" stroke="#fff" stroke-linecap="round"><path stroke-width="3.2" d="M3 27C5 13 15 4 31 3"/><path stroke-width="2" d="M11 27c1.500-8 8-14 18-15"/><circle cx="30" cy="20" r="3.500" fill="#fff" stroke="none"/></svg>Redline</a>
-  <a href="#">Login</a><a href="#">Sign up</a>
-  <span class="srch"><svg viewBox="0 0 24 24"><circle cx="10.500" cy="10.500" r="6.500"/><path d="m15.500 15.500 5 5"/></svg></span>
-  <button class="ico" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M5 8h14M7 12h10M5 16h14"/></svg></button>
-</header>
-<div id="rail"><button aria-label="Mars"></button><button aria-label="Tharsis"></button><button aria-label="Destination"></button></div>
 <div id="hint">Drag to spin · click the planet to land</div>
 </main>
+
+<!-- 1. The crossing: a scroll-scrubbed Hohmann transfer -->
+<section id="crossing" class="pinsec" style="height:360vh" aria-labelledby="cxTitle">
+  <div class="stage cross">
+    <div class="cx-copy">
+      <p class="label" id="cxTitle">The crossing</p>
+      <b class="cx-days" id="days" aria-hidden="true">0</b>
+      <p class="cx-unit">days, Earth to Mars</p>
+      <div class="cx-notes">
+        <p class="note"><em>Day 0</em>Leave Earth orbit. One long burn, then nothing but quiet.</p>
+        <p class="note"><em>Day 130</em>Halfway. Earth is a bright star behind you, Mars a red one ahead.</p>
+        <p class="note"><em>Day 259</em>Slip into Mars orbit, then down through the dust to the surface.</p>
+      </div>
+    </div>
+    <div class="cx-sun" id="cxSun"></div>
+    <svg class="cx-orbits" id="cxSvg" viewBox="-1.75 -1.75 3.5 3.5" aria-hidden="true">
+      <circle r="1" class="orb"/><circle r="1.524" class="orb"/>
+      <path class="cx-ghost" id="cxGhost"/><polyline class="cx-trail" id="cxTrail"/>
+    </svg>
+    <div class="body cx-earth" id="cxEarth" aria-hidden="true"><i></i><span>Earth</span></div>
+    <div class="body cx-mars" id="cxMars" aria-hidden="true"><i></i><span>Mars</span></div>
+    <div class="body cx-ship" id="cxShip" aria-hidden="true"><i class="pdot"></i><span>Redline I</span></div>
+  </div>
+</section>
+
+<!-- 2. Landing sites: the flat map, one site per beat -->
+<section id="places" class="pinsec" style="height:480vh" aria-labelledby="plLabel">
+  <div class="stage places">
+    <div class="pl-map" id="plMap"></div>
+    <div class="pl-shade"></div>
+    <p class="label pl-label" id="plLabel">Landing sites<span id="plCount">01 / 04</span></p>
+    <div class="pl-name" id="plName" aria-live="polite"></div>
+    <div class="pl-info">
+      <div class="pl-photo" id="plPhoto"></div>
+      <div class="pl-text" id="plText">
+        <p class="pl-coord" id="plCoord"></p>
+        <p class="note pl-desc" id="plDesc"></p>
+        <a href="#book" class="btn" id="plGo">Land here</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. On board -->
+<section id="aboard" class="aboard" aria-labelledby="abTitle">
+  <div class="ab-head">
+    <div><p class="label">On board Redline I</p><h2 class="ab-title" id="abTitle">Eight and a half months, done properly.</h2></div>
+    <p class="note">The ship is built for one job: getting forty-eight people to Mars rested, fed and ready to walk.</p>
+  </div>
+  <ol class="ab-rows">
+    <li><b>48</b><p class="note"><em>Passengers</em>Forty-eight seats a window and six crew. Everyone has a cabin to themselves.</p></li>
+    <li><b>0.38<small>g</small></b><p class="note"><em>Gravity</em>The habitat ring spins to match Mars, so you step off already used to the weight.</p></li>
+    <li><b>2.4<small>m</small></b><p class="note"><em>Your cabin</em>Wall to wall, with a bunk, a desk and a real window.</p></li>
+    <li><b>6<small>kg</small></b><p class="note"><em>Luggage</em>Everything else is waiting in the habitat. Pack what you would miss.</p></li>
+  </ol>
+</section>
+
+<!-- 4. The stay: crane up over the spires -->
+<section id="stay" class="pinsec" style="height:300vh" aria-labelledby="stTitle">
+  <div class="stage stay">
+    <div class="st-land" id="stLand"></div>
+    <div class="st-word" id="stWord"><small id="stTitle">A season on the surface</small><b>STAY</b></div>
+    <div class="st-fore" id="stFore"></div>
+    <div class="st-shade" id="stShade"></div>
+    <div class="st-notes" id="stNotes">
+      <p class="note"><em>Habitat</em>Pressurised rooms cut into the canyon wall, with metres of rock overhead against radiation.</p>
+      <p class="note"><em>Walks</em>Two suited walks a week with a guide, never further than the rover can bring you back.</p>
+      <p class="note"><em>Home</em>Your return seat is held from the day you book, on the next window back.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Launch windows -->
+<section id="windows" class="windows" aria-labelledby="wnTitle">
+  <div class="wn-head">
+    <div><p class="label">Launch windows</p><h2 class="wn-title" id="wnTitle">NEXT<br>WINDOWS</h2></div>
+    <p class="note">Earth and Mars line up for the crossing about every 26 months. Between windows, nobody goes, so seats are sold one window at a time.</p>
+  </div>
+  <div class="wn-track"><i id="wnBar"></i></div>
+  <ol class="wn-list" id="wnList">
+    <li><span class="wn-dot"></span><b>Mar 2041</b><p class="note">Depart 12 Mar 2041 · arrive 26 Nov 2041</p><p class="wn-seats">9 of 48 seats left<i style="--f:81%"></i></p><a href="#book" class="btn" data-window="0">Hold a seat</a></li>
+    <li><span class="wn-dot"></span><b>May 2043</b><p class="note">Depart 14 May 2043 · arrive 28 Jan 2044</p><p class="wn-seats">31 of 48 seats left<i style="--f:35%"></i></p><a href="#book" class="btn" data-window="1">Hold a seat</a></li>
+    <li><span class="wn-dot"></span><b>Jul 2045</b><p class="note">Depart 16 Jul 2045 · arrive 1 Apr 2046</p><p class="wn-seats">All 48 seats open<i style="--f:0%"></i></p><a href="#book" class="btn" data-window="2">Hold a seat</a></li>
+  </ol>
+</section>
+
+<!-- 6. Book -->
+<section id="book" class="book" aria-labelledby="bkTitle">
+  <div class="bk-copy">
+    <p class="label">Book</p>
+    <h2 class="bk-title" id="bkTitle">Book the crossing.</h2>
+    <p class="note">Seats are held for 14 days while our flight doctors review your medical. Nothing is charged until they sign off.</p>
+  </div>
+  <form class="bar bk-bar" id="bkForm">
+    <div><label for="b1">Launch window</label><select id="b1"><option>12 Mar 2041</option><option>14 May 2043</option><option>16 Jul 2045</option></select></div>
+    <div><label for="b2">Landing site</label><select id="b2"></select></div>
+    <div><label for="b3">Passengers</label><select id="b3"><option>1 adult</option><option selected>2 adults</option><option>3 adults</option><option>4 adults</option></select></div>
+    <button aria-label="Hold seats">→</button>
+  </form>
+  <p class="bk-done" id="bkDone" aria-live="polite"></p>
+  <div class="bk-word" id="bkWord" aria-hidden="true">MARS</div>
+</section>
+<footer>
+  <a class="logo" href="#" data-home><svg viewBox="0 0 34 30" fill="none" stroke="#fff" stroke-linecap="round"><path stroke-width="3.2" d="M3 27C5 13 15 4 31 3"/><path stroke-width="2" d="M11 27c1.5-8 8-14 18-15"/><circle cx="30" cy="20" r="3.5" fill="#fff" stroke="none"/></svg>Redline</a>
+  <a href="#crossing">The crossing</a><a href="#places">Landing sites</a><a href="#aboard">On board</a><a href="#stay">The stay</a><a href="#windows">Windows</a>
+  <small>© 2026 Redline. A concept site: nothing here can be booked, and no form sends anything.</small>
+</footer>
 
 <script type="module">
 import * as THREE from 'three';
@@ -137,10 +406,14 @@ const CARDS = P + '20261031_030420_e222aa05-c121-4f31-a466-0321badc0e28.png&w=14
 /* ---------- data ---------- */
 const SHEET = {w: 2336, h: 1744};
 const SITES = [
-  {name: 'Olympus Mons', u: .121, v: .31, box: [0, 0, 1150, 810]},
-  {name: 'Valles Marineris', u: .45, v: .56, box: [1186, 0, 1150, 810]},
-  {name: 'Gale Crater', u: .85, v: .75, box: [0, 900, 1150, 810]},
-  {name: 'Jezero Delta', u: .61, v: .35, box: [1186, 900, 1150, 810]}
+  {name: 'Olympus Mons', u: .121, v: .31, box: [0, 0, 1150, 810],
+   coord: '18.6° N · 226.2° E', desc: 'The tallest volcano we know of, about 22 km high and roughly the size of Arizona. You camp on the caldera rim.'},
+  {name: 'Valles Marineris', u: .45, v: .56, box: [1186, 0, 1150, 810],
+   coord: '13.9° S · 59.2° W', desc: 'A canyon system more than 4,000 km long and up to 7 km deep. Our habitat sits in its walls.'},
+  {name: 'Gale Crater', u: .85, v: .75, box: [0, 900, 1150, 810],
+   coord: '5.4° S · 137.8° E', desc: 'A crater 154 km across with Mount Sharp rising 5.5 km from its floor. Curiosity has driven here since 2012.'},
+  {name: 'Jezero Delta', u: .61, v: .35, box: [1186, 900, 1150, 810],
+   coord: '18.4° N · 77.6° E', desc: 'An old lake bed 45 km wide, with a river delta frozen in stone. Perseverance landed here in 2021.'}
 ];
 const THARSIS = {u: .15, v: .41};
 
@@ -157,8 +430,10 @@ const dirOf = (u, v) => {
 const faceYaw = d => Math.atan2(-d.x, d.z);
 const faceLat = d => Math.asin(clamp(d.y, -1, 1));
 const wrapPi = a => { a = (a + Math.PI) % (2 * Math.PI); if (a < 0) a += 2 * Math.PI; return a - Math.PI; };
+const crop = ([x, y, w, h]) => `background-image:url("${CARDS}");background-size:${SHEET.w / w * 100}% ${SHEET.h / h * 100}%;background-position:${x / (SHEET.w - w) * 100}% ${y / (SHEET.h - h) * 100}%`;
 
 const $ = id => document.getElementById(id);
+const hero = $('hero');
 const el = {
   word0: $('word0'), eyebrow: $('eyebrow'), flare: $('flare'), gl: $('gl'), dust: $('dust'), pin: $('pin'),
   word1: $('word1'), sites: $('sites'), card: $('card'), region: $('region'), land: $('land'), dest: $('dest'),
@@ -174,6 +449,7 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
 /* ---------- viewport ---------- */
 let W = innerWidth, H = innerHeight, portrait = false, R0 = 1, ww = 1, wh = 1;
+let vw = innerWidth, vh = innerHeight, sy = 0;
 
 /* ---------- renderer ---------- */
 const renderer = new THREE.WebGLRenderer({canvas: el.gl, alpha: true, antialias: true});
@@ -239,7 +515,6 @@ function useMap(source) {
   const g = c.getContext('2d');
   if (source) g.drawImage(source, 0, 0, MW, MH);
   else { g.fillStyle = '#c47a4a'; g.fillRect(0, 0, MW, MH); }
-  // horizontal seam: fade the left 7% onto the right edge
   const fw = Math.round(MW * .07), tc = document.createElement('canvas');
   tc.width = fw; tc.height = MH;
   const tg = tc.getContext('2d');
@@ -249,7 +524,6 @@ function useMap(source) {
   hg.addColorStop(0, 'rgba(0,0,0,0)'); hg.addColorStop(1, 'rgba(0,0,0,1)');
   tg.fillStyle = hg; tg.fillRect(0, 0, fw, MH);
   g.drawImage(tc, MW - fw, 0);
-  // poles
   const ph = Math.round(MH * .035);
   let vg = g.createLinearGradient(0, 0, 0, ph);
   vg.addColorStop(0, '#e9dfd2'); vg.addColorStop(1, 'rgba(233,223,210,0)');
@@ -272,7 +546,7 @@ img.onload = () => useMap(img);
 img.onerror = () => useMap(null);
 img.src = MAP;
 
-/* ---------- sites ---------- */
+/* ---------- hero sites ---------- */
 let cur = 0;
 el.sites.innerHTML = SITES.map((s, i) => `<li data-i="${i}">${s.name}</li>`).join('');
 const items = [...el.sites.children];
@@ -282,17 +556,18 @@ function pick(i) {
   const [x, y, w, h] = SITES[i].box;
   el.card.style.backgroundSize = `${SHEET.w / w * 100}% ${SHEET.h / h * 100}%`;
   el.card.style.backgroundPosition = `${x / (SHEET.w - w) * 100}% ${y / (SHEET.h - h) * 100}%`;
-  const r = items[i].getBoundingClientRect();
-  el.card.style.top = `${r.top + r.height / 2 - el.card.offsetHeight / 2}px`;
+  const r = items[i].getBoundingClientRect(), hr = hero.getBoundingClientRect();
+  el.card.style.top = `${r.top - hr.top + r.height / 2 - el.card.offsetHeight / 2}px`;
   el.destName.textContent = SITES[i].name;
   el.region.textContent = SITES[i].name.toUpperCase();
+  bkSite.value = String(i);
 }
 items.forEach((li, i) => {
   li.addEventListener('mouseenter', () => pick(i));
   li.addEventListener('click', () => { pick(i); go(2); });
 });
 
-/* ---------- state ---------- */
+/* ---------- hero state ---------- */
 let st = 0, from = 0, to = 0, t0 = 0, dur = 1;
 function go(n) {
   n = clamp(Math.round(n), 0, 2);
@@ -303,22 +578,84 @@ function go(n) {
   const span = (a, b) => Math.max(0, Math.min(hi, b) - Math.max(lo, a));
   dur = reduced.matches ? 1 : Math.max(1, span(0, 1) * 1300 + span(1, 2) * 2500);
 }
+function snapHero(n) { st = from = to = n; t0 = 0; dur = 1; }
+
+/* ---------- page lock: the hero owns input until the landing ---------- */
+let locked = true, topSince = 0;
+function setLock(v) {
+  if (v === locked) return;
+  locked = v;
+  document.documentElement.classList.toggle('lock', v);
+}
+const atTopLongEnough = now => sy <= 1 && topSince && now - topSince > 350;
+
+function navTo(id) {
+  const target = $(id);
+  if (!target) return;
+  if (to < 2 || st < 2) snapHero(2);
+  setLock(false);
+  scrollTo({top: target.offsetTop, behavior: reduced.matches ? 'auto' : 'smooth'});
+}
+function toHero(n) {
+  if (sy > 1) scrollTo({top: 0, behavior: 'auto'});
+  sy = 0;
+  if (n < 2) setLock(true);
+  go(n);
+}
+
 $('explore').addEventListener('click', e => { e.preventDefault(); go(2); });
-$('home').addEventListener('click', e => { e.preventDefault(); go(0); });
-el.rail.forEach((b, i) => b.addEventListener('click', () => go(i)));
+$('home').addEventListener('click', e => { e.preventDefault(); toHero(0); });
+document.querySelector('footer [data-home]').addEventListener('click', e => { e.preventDefault(); toHero(0); });
+el.rail.forEach((b, i) => b.addEventListener('click', () => b.dataset.to ? navTo(b.dataset.to) : toHero(i)));
+el.bar.addEventListener('submit', () => navTo('windows'));
+
+// in-page anchors (#crossing, #book …), plus the "Land here" and "Hold a seat" buttons
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a || a.id === 'explore' || a.id === 'home' || a.hasAttribute('data-home')) return;
+  e.preventDefault();
+  const id = a.getAttribute('href').slice(1);
+  if (a.dataset.window) $('b1').selectedIndex = +a.dataset.window;
+  if (a === $('plGo')) bkSite.value = String(plIdx);
+  if (id) navTo(id);
+});
 
 let wheelLock = 0;
 addEventListener('wheel', e => {
   const now = performance.now();
-  if (now < wheelLock) return;
-  if (e.deltaY > 8) { go(to + 1); wheelLock = now + 1400; }
-  else if (e.deltaY < -8) { go(to - 1); wheelLock = now + 1400; }
+  if (locked) {
+    if (now < wheelLock) return;
+    if (e.deltaY > 8) { go(to + 1); wheelLock = now + 1400; }
+    else if (e.deltaY < -8) { go(to - 1); wheelLock = now + 1400; }
+  } else if (e.deltaY < -8 && atTopLongEnough(now) && now >= wheelLock) {
+    setLock(true); go(1); wheelLock = now + 1400;
+  }
 }, {passive: true});
-addEventListener('keydown', e => { if (e.key === 'Escape') go(to - 1); });
+
+addEventListener('keydown', e => {
+  if (e.target.closest && e.target.closest('input,select,textarea')) return;
+  const now = performance.now();
+  const fwd = ['ArrowDown', 'PageDown', ' '].includes(e.key), back = ['ArrowUp', 'PageUp'].includes(e.key);
+  if (e.key === 'Escape') { if (locked || sy <= 1) go(to - 1); return; }
+  if (locked && (fwd || back)) { e.preventDefault(); go(to + (fwd ? 1 : -1)); }
+  else if (!locked && back && sy <= 1 && atTopLongEnough(now)) { e.preventDefault(); setLock(true); go(1); }
+});
+
+// touch: swipe to step through the hero, swipe down at the very top to go back into it
+let tY = 0, tX = 0;
+addEventListener('touchstart', e => { tY = e.touches[0].clientY; tX = e.touches[0].clientX; }, {passive: true});
+addEventListener('touchmove', e => { if (locked) e.preventDefault(); }, {passive: false});
+addEventListener('touchend', e => {
+  const dy = tY - e.changedTouches[0].clientY, dx = tX - e.changedTouches[0].clientX;
+  if (Math.abs(dy) < 50 || Math.abs(dy) < Math.abs(dx) * 1.2) return;
+  const now = performance.now();
+  if (locked) go(to + (dy > 0 ? 1 : -1));
+  else if (dy < 0 && atTopLongEnough(now)) { setLock(true); go(1); }
+}, {passive: true});
 
 /* ---------- pointer ---------- */
 let mouseX = 0, mouseY = 0;
-addEventListener('pointermove', e => { mouseX = e.clientX / W - .5; mouseY = e.clientY / H - .5; });
+addEventListener('pointermove', e => { mouseX = e.clientX / vw - .5; mouseY = e.clientY / vh - .5; });
 
 let yaw = faceYaw(dirOf(.4, .5)), pitch = .16, vy = 0;
 let dragging = false, lastDrag = -1e9, downX = 0, downY = 0, lastX = 0, lastY = 0, moved = 0;
@@ -364,9 +701,92 @@ const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(s
 const motes = Array.from({length: 34}, () => { const r = rnd(); return {x: rnd(), y: rnd(), r: 3 + r * r * 34, s: .004 + rnd() * .012, p: rnd() * 6.28}; });
 let ddpr = 1;
 
+/* =====================================================================
+   SECTIONS
+   ===================================================================== */
+
+/* ---------- crossing: a real Hohmann transfer, 1 AU to 1.524 AU ---------- */
+const R1 = 1, R2 = 1.524, A = (R1 + R2) / 2, ECC = (R2 - R1) / (R2 + R1);
+const TY = Math.pow(A, 1.5) / 2;            // transfer time in years (≈ .709, 259 days)
+const MARS_YR = Math.pow(R2, 1.5);          // ≈ 1.881
+function shipAt(k) {                        // k: 0..1 of the transfer time
+  const M = Math.PI * k;
+  let E = M;
+  for (let i = 0; i < 8; i++) E -= (E - ECC * Math.sin(E) - M) / (1 - ECC * Math.cos(E));
+  const th = 2 * Math.atan2(Math.sqrt(1 + ECC) * Math.sin(E / 2), Math.sqrt(1 - ECC) * Math.cos(E / 2));
+  const r = A * (1 - ECC * Math.cos(E));
+  return [r * Math.cos(th), -r * Math.sin(th)];   // svg y points down
+}
+const NPTS = 180, PTS = Array.from({length: NPTS + 1}, (_, i) => shipAt(i / NPTS));
+$('cxGhost').setAttribute('d', 'M' + PTS.map(p => p[0].toFixed(4) + ' ' + p[1].toFixed(4)).join('L'));
+const cx$ = {svg: $('cxSvg'), trail: $('cxTrail'), sun: $('cxSun'), earth: $('cxEarth'), mars: $('cxMars'), ship: $('cxShip'),
+  days: $('days'), shipLabel: document.querySelector('#cxShip span'), notes: [...document.querySelectorAll('.cx-notes p')], map: {ox: 0, oy: 0, s: 1}, lastDay: -1};
+
+/* ---------- places: the flat map, wrapped three wide ---------- */
+const MAP_AR = 2688 / 1152;
+const pl$ = {map: $('plMap'), name: $('plName'), photo: $('plPhoto'), text: $('plText'), coord: $('plCoord'), desc: $('plDesc'), count: $('plCount')};
+pl$.map.innerHTML = [0, 1, 2].map(i => `<img src="${MAP}" alt="" class="pl-copy" style="left:${i * 100 / 3}%;width:${100 / 3}%" ${i === 1 ? '' : 'aria-hidden="true"'}>`).join('')
+  + '<div class="pl-tint"></div><div class="pl-pins" style="left:33.3333%;width:33.3333%">'
+  + SITES.map((s, i) => `<button class="pl-pin" data-i="${i}" style="left:${s.u * 100}%;top:${s.v * 100}%" aria-label="${s.name}"><i></i><span>${s.name}</span></button>`).join('')
+  + '</div>';
+pl$.pins = [...pl$.map.querySelectorAll('.pl-pin')];
+pl$.name.innerHTML = SITES.map(s => `<span>${s.name}</span>`).join('');
+pl$.names = [...pl$.name.children];
+pl$.photo.innerHTML = SITES.map(s => `<div style='${crop(s.box)}'></div>`).join('');
+pl$.photos = [...pl$.photo.children];
+let plIdx = -1, plCw = 1, plCh = 1, plZ = 1, plTx = 0, plTy = 0, plInit = false;
+function setPlace(i) {
+  if (i === plIdx) return;
+  const prev = plIdx; plIdx = i;
+  pl$.names.forEach((n, k) => { n.classList.toggle('on', k === i); n.classList.toggle('gone', k < i); });
+  pl$.photos.forEach((n, k) => n.classList.toggle('on', k === i));
+  pl$.pins.forEach((n, k) => n.classList.toggle('on', k === i));
+  pl$.coord.textContent = SITES[i].coord;
+  pl$.desc.textContent = SITES[i].desc;
+  pl$.count.textContent = `0${i + 1} / 0${SITES.length}`;
+  if (prev >= 0) { pl$.text.classList.remove('swap'); void pl$.text.offsetWidth; pl$.text.classList.add('swap'); }
+}
+pl$.pins.forEach((b, i) => b.addEventListener('click', () => {
+  const g = geo.places, k = .04 + (i + .5) / SITES.length * .92;
+  scrollTo({top: g.top + k * g.len, behavior: reduced.matches ? 'auto' : 'smooth'});
+}));
+
+/* ---------- booking form ---------- */
+const bkSite = $('b2');
+bkSite.innerHTML = SITES.map((s, i) => `<option value="${i}">${s.name}</option>`).join('');
+$('bkForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const n = $('b3').value, w = $('b1').value, s = SITES[+bkSite.value].name;
+  $('bkDone').textContent = `Holding ${n === '1 adult' ? 'one seat' : n.replace(' adults', ' seats')} on the ${w} window to ${s}. In a real booking, our flight doctors would be in touch within a day.`;
+});
+
+/* ---------- geometry cache ---------- */
+const geo = {};
+const pinned = ['crossing', 'places', 'stay'];
+const order = ['crossing', 'places', 'aboard', 'stay', 'windows', 'book'];
+const abRows = [...document.querySelectorAll('.ab-rows li')];
+const wnItems = [...document.querySelectorAll('#wnList li')];
+const docTop = n => n.getBoundingClientRect().top + scrollY;
+function measure() {
+  vw = innerWidth; vh = innerHeight;
+  order.forEach(id => { const n = $(id); geo[id] = {top: n.offsetTop, h: n.offsetHeight, len: Math.max(1, n.offsetHeight - vh)}; });
+  geo.rows = abRows.map(docTop);
+  geo.wn = docTop($('wnList'));
+  geo.wnItems = wnItems.map(docTop);
+  // crossing: svg user units -> stage px (preserveAspectRatio meet)
+  const stage = cx$.svg.parentNode.getBoundingClientRect(), r = cx$.svg.getBoundingClientRect();
+  const s = Math.min(r.width, r.height) / 3.5;
+  cx$.map = {ox: r.left - stage.left + r.width / 2, oy: r.top - stage.top + r.height / 2, s};
+  // places: cover the stage with the map
+  if (vw / vh > MAP_AR) { plCw = vw; plCh = vw / MAP_AR; } else { plCh = vh; plCw = vh * MAP_AR; }
+  pl$.map.style.width = plCw * 3 + 'px';
+  pl$.map.style.height = plCh + 'px';
+  plInit = false;
+}
+
 /* ---------- resize ---------- */
 function resize() {
-  W = innerWidth; H = innerHeight;
+  W = hero.clientWidth; H = hero.clientHeight;
   portrait = H > W * 1.05;
   R0 = portrait ? W * .36 : Math.min(H * .3, W * .19);
   renderer.setSize(W, H, false);
@@ -375,33 +795,62 @@ function resize() {
   ddpr = Math.min(devicePixelRatio, 1.5);
   el.dust.width = Math.round(W * ddpr); el.dust.height = Math.round(H * ddpr);
   ww = el.word0.offsetWidth; wh = el.word0.offsetHeight;
+  measure();
   pick(cur);
 }
 addEventListener('resize', resize);
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 resize();
+setPlace(0);
 document.fonts && document.fonts.ready.then(resize);
+addEventListener('load', measure);
+
+// deep link straight to a section
+const startId = location.hash.slice(1);
+if (order.includes(startId)) { snapHero(2); setLock(false); requestAnimationFrame(() => scrollTo(0, $(startId).offsetTop)); }
+else scrollTo(0, 0);
 
 /* ---------- frame ---------- */
 const tmp = new THREE.Vector3(), AX = new THREE.Vector3(1, 0, 0), AY = new THREE.Vector3(0, 1, 0);
 const thDir = dirOf(THARSIS.u, THARSIS.v);
 const siteDirs = SITES.map(s => dirOf(s.u, s.v));
 const show = (node, o) => { node.style.opacity = o; node.style.visibility = o < .005 ? 'hidden' : 'visible'; };
-let last = performance.now();
+const inView = id => sy + vh > geo[id].top && sy < geo[id].top + geo[id].h;
+const prog = id => clamp((sy - geo[id].top) / geo[id].len);
+const st$ = {land: $('stLand'), fore: $('stFore'), word: $('stWord'), shade: $('stShade'), notes: $('stNotes')};
+st$.land.style.backgroundImage = `url("${LAND}")`;
+st$.fore.style.backgroundImage = `url("${FORE}")`;
+const topfade = $('topfade'), wnBar = $('wnBar'), bkWord = $('bkWord');
+let last = performance.now(), railOn = -1;
 
 function render(now) {
   requestAnimationFrame(render);
   const dt = Math.min((now - last) / 1000, .05); last = now;
   const t = now / 1000;
   const f = r => 1 - Math.exp(-dt * r);
+  const rm = reduced.matches;
+
+  sy = scrollY;
+  if (sy <= 1) { if (!topSince) topSince = now; } else topSince = 0;
 
   st = mix(from, to, io(seg(now, t0, t0 + dur)));
   const a = clamp(st), b = clamp(st - 1);
+  // release the page once the landing has settled
+  if (locked && to === 2 && st > 1.999) setLock(false);
 
-  // intro
+  if (sy < H) heroFrame(now, t, dt, f, a, b);
+  sectionFrame(t, dt, rm);
+
+  show(topfade, seg(sy, H * .6, H));
+  let ri = Math.round(st);
+  if (sy > vh * .5) { ri = 3; order.forEach((id, i) => { if (geo[id].top <= sy + vh * .5) ri = 3 + i; }); }
+  if (ri !== railOn) { railOn = ri; el.rail.forEach((btn, i) => btn.classList.toggle('on', i === ri)); }
+}
+
+function heroFrame(now, t, dt, f, a, b) {
   const age = loadedAt < 0 ? 0 : (now - loadedAt) / 1000;
   const grow = out(seg(age, 0, 1.5)), iw = out(seg(age, .75, 1.7));
 
-  // planet placement
   const bz = io(seg(b, 0, .62));
   const px = portrait ? .5 * W : mix(.5 * W, .36 * W, a);
   const py = portrait ? mix(.4 * H, .33 * H, a) : .5 * H;
@@ -410,7 +859,6 @@ function render(now) {
   planet.position.set(cx - W / 2, H / 2 - cy, 0);
   planet.scale.setScalar(R);
 
-  // rotation
   const idle = !dragging && now - lastDrag > 1500;
   if (!dragging) { yaw += vy; vy *= Math.exp(-dt * 4); }
   if (st < .02) {
@@ -425,14 +873,12 @@ function render(now) {
   }
   spin.rotation.y = yaw; tilt.rotation.x = pitch;
 
-  // highlight
   uniforms.hiDir.value.copy(b > .02 ? siteDirs[cur] : thDir);
   uniforms.hiR.value = b > .02 ? mix(.62, .3, seg(b, 0, .1)) : .62;
   uniforms.hi.value = clamp(seg(a, .15, .6) + (b > 0 ? 1 : 0));
 
-  renderer.render(scene, camera);
+  if (bz < .999 || b < .6) renderer.render(scene, camera);
 
-  // word0
   const wx = portrait ? 0 : -a * .08 * W;
   const wy = portrait ? H * -.1 + R * 1.08 + wh * .5 : mouseY * -6;
   const I = (1 - iw) * 50;
@@ -440,29 +886,24 @@ function render(now) {
   el.word0.style.clipPath = `inset(-10% ${I}% -10% ${I}%)`;
   show(el.word0, 1 - seg(a, .1, .5));
 
-  // eyebrow
   el.eyebrow.style.transform = portrait
     ? `translate(-50%, calc(-50% + ${wy + wh / 2 + 22}px))`
     : `translate(${wx - ww / 2 + ww * .02}px, calc(-50% + ${wy - wh / 2 - 34}px))`;
   show(el.eyebrow, iw * (1 - seg(a, .05, .35)));
 
-  // flare
   el.flare.style.transform = `translate(${cx + R * .74}px, ${cy - R * .62}px)`;
   show(el.flare, grow * (.88 + .12 * Math.sin(t * 1.3)) * (1 - seg(bz, 0, .35)));
 
   show(el.hint, iw * .8 * (1 - seg(a, 0, .25)));
 
-  // pin
   tmp.copy(thDir).applyAxisAngle(AY, yaw).applyAxisAngle(AX, pitch);
   el.pin.style.transform = `translate(${cx + tmp.x * R - 6}px, ${cy - tmp.y * R - 8}px)`;
   show(el.pin, seg(tmp.z, .22, .42) * seg(age, 1.6, 2.1) * (1 - seg(a, 0, .3)));
 
-  // word1
   const ka = seg(a, .45, 1);
   show(el.word1, ka * (1 - seg(b, .02, .16)));
   el.word1.style.transform = `translate(calc(-50% + ${portrait ? 0 : .02 * W + (1 - out(ka)) * 40}px), ${(portrait ? .46 : .56) * H}px)`;
 
-  // sites + card
   const so = seg(a, .55, 1) * (1 - seg(b, 0, .14));
   show(el.sites, so); show(el.card, so);
   el.sites.style.pointerEvents = el.card.style.pointerEvents = so < .6 ? 'none' : 'auto';
@@ -471,11 +912,8 @@ function render(now) {
   el.gl.style.pointerEvents = st < 1.02 ? 'auto' : 'none';
 
   show(el.region, seg(b, .14, .26) * (1 - seg(b, .42, .52)));
-
-  // fog
   show(el.fog, seg(b, .36, .54) * (1 - seg(b, .62, .96)));
 
-  // landing
   const landed = b > .5;
   const lk = out(seg(b, .5, 1)), fk = out(seg(b, .58, 1)), dk = out(seg(b, .66, .98));
   const drift = 1 + .02 * Math.sin(t * .18);
@@ -487,7 +925,6 @@ function render(now) {
     el.destSmall.style.opacity = seg(b, .8, 1) * .92;
   }
 
-  // bar
   const bk = seg(b, .86, 1);
   show(el.bar, bk);
   el.bar.style.transform = `translate(-50%, ${(1 - out(bk)) * 34}px)`;
@@ -495,10 +932,6 @@ function render(now) {
 
   show(el.scrim, seg(b, .6, .9));
 
-  const ri = Math.round(st);
-  el.rail.forEach((btn, i) => btn.classList.toggle('on', i === ri));
-
-  // dust
   dctx.setTransform(1, 0, 0, 1, 0, 0);
   dctx.clearRect(0, 0, el.dust.width, el.dust.height);
   dctx.setTransform(ddpr, 0, 0, ddpr, 0, 0);
@@ -511,6 +944,84 @@ function render(now) {
     dctx.drawImage(sprite, x - m.r, y - m.r, m.r * 2, m.r * 2);
   }
   dctx.globalAlpha = 1;
+}
+
+function place(node, x, y, d) { node.style.transform = `translate(${x - d / 2}px, ${y - d / 2}px)`; }
+
+function sectionFrame(t, dt, rm) {
+  /* crossing */
+  if (inView('crossing')) {
+    const k = seg(prog('crossing'), .06, .9), {ox, oy, s} = cx$.map;
+    const P = (x, y) => [ox + x * s, oy + y * s];
+    const n = Math.floor(k * NPTS), ship = shipAt(k);
+    cx$.trail.setAttribute('points', PTS.slice(0, n + 1).concat([ship]).map(p => p[0].toFixed(4) + ',' + p[1].toFixed(4)).join(' '));
+    const day = Math.round(259 * k);
+    if (day !== cx$.lastDay) { cx$.lastDay = day; cx$.days.textContent = day; }
+    const ea = 2 * Math.PI * TY * k, ma = Math.PI - 2 * Math.PI * TY / MARS_YR * (1 - k);
+    let [x, y] = P(Math.cos(ea) * R1, -Math.sin(ea) * R1); place(cx$.earth, x, y, 10);
+    [x, y] = P(Math.cos(ma) * R2, -Math.sin(ma) * R2); place(cx$.mars, x, y, 18);
+    [x, y] = P(ship[0], ship[1]); place(cx$.ship, x, y, 12);
+    cx$.ship.style.opacity = k < .995 ? 1 : 0;
+    cx$.shipLabel.style.opacity = seg(k, .05, .1);
+    [x, y] = P(0, 0); cx$.sun.style.transform = `translate(${x}px, ${y}px)`;
+    const o = [1 - seg(k, .28, .34), seg(k, .34, .4) * (1 - seg(k, .7, .76)), seg(k, .76, .82)];
+    cx$.notes.forEach((p, i) => { p.style.opacity = o[i]; p.style.transform = `translateY(${(1 - o[i]) * 8}px)`; });
+  }
+
+  /* places */
+  if (inView('places')) {
+    const p = prog('places'), n = SITES.length;
+    const i = Math.min(n - 1, Math.floor(seg(p, .04, .96) * n));
+    setPlace(i);
+    const mobile = vw <= 760, s = SITES[i];
+    const Z = p < .015 ? 1 : (mobile ? 1.3 : 1.5);
+    const fx = mobile ? .5 : .42, fy = mobile ? .3 : .4, slack = vh * (mobile ? .15 : .12);
+    const tx = fx * vw - s.u * plCw * Z;
+    const ty = clamp(fy * vh - s.v * plCh * Z, vh - plCh * Z - slack, slack);
+    const tz = Z === 1 ? (vh - plCh) / 2 : ty, txz = Z === 1 ? (vw - plCw) / 2 : tx;
+    const k = (rm || !plInit) ? 1 : 1 - Math.exp(-dt * 3.2);
+    plInit = true;
+    plZ += (Z - plZ) * k; plTx += (txz - plTx) * k; plTy += (tz - plTy) * k;
+    pl$.map.style.transform = `translate(${plTx - plCw * plZ}px, ${plTy}px) scale(${plZ})`;
+    const inv = `translate(-50%,-50%) scale(${1 / plZ})`;
+    pl$.pins.forEach(b => b.style.transform = inv);
+  }
+
+  /* aboard: each row wipes open as it enters */
+  geo.rows.forEach((top, i) => {
+    const q = rm ? 1 : out(seg(sy + vh - top, vh * .06, vh * .42));
+    abRows[i].style.clipPath = `inset(-2% ${(1 - q) * 100}% -2% 0)`;
+  });
+
+  /* stay: crane up over the spires */
+  if (inView('stay')) {
+    const p = prog('stay'), m = rm ? 0 : 1;
+    const up = out(seg(p, .0, .55)), over = io(seg(p, .2, .85));
+    st$.land.style.transform = `translateY(${over * 4 * m}%) scale(${1.1 - .08 * over * m})`;
+    st$.word.style.transform = `translateY(${(1 - up) * 22 * m}vh)`;
+    st$.fore.style.transform = `translateY(${over * 62}%) scale(${1 + over * .5 * m})`;
+    const nq = seg(p, .62, .82);
+    st$.shade.style.opacity = seg(p, .45, .8);
+    show(st$.notes, nq);
+    st$.notes.style.transform = `translateY(${(1 - out(nq)) * 30}px)`;
+  }
+
+  /* windows: the line draws, each window lights as the line reaches it */
+  {
+    const q = rm ? 1 : seg(sy + vh - geo.wn, vh * .12, vh * .7);
+    wnBar.style.transform = `scaleX(${q})`;
+    const mobile = vw <= 760;
+    wnItems.forEach((li, i) => {
+      const lit = mobile ? sy + vh - geo.wnItems[i] > vh * .2 : q >= i / 3 + .02;
+      if (li.classList.contains('lit') !== lit) li.classList.toggle('lit', lit);
+    });
+  }
+
+  /* book: the word rises like a horizon */
+  if (inView('book')) {
+    const q = rm ? 1 : out(seg(sy + vh - geo.book.top, 0, vh));
+    bkWord.style.transform = `translateY(${mix(70, 34, q)}%)`;
+  }
 }
 requestAnimationFrame(render);
 </script>
