@@ -271,7 +271,7 @@ button { border: 0; font: inherit; }
   min-height: 50px; margin-top: 28px; display: inline-flex; align-items: center;
   justify-content: center; gap: 12px; padding: 0 28px; border-radius: 999px;
   color: var(--ink); background: #fdf1e1; box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
-  pointer-events: auto; cursor: pointer;
+  pointer-events: auto; cursor: pointer; text-decoration: none;
 }
 .note-button span:first-child { font-size: 1.25rem; line-height: 1; }
 

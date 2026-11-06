@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Routes · Mostar city</title>
+  <meta name="description" content="An old town walk, day trips along the Neretva valley, how to reach Mostar, when to go and what to know before you leave." />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="site.css" />
+  <script src="site.js" defer></script>
+</head>
+<body class="page">
+  <header class="page-header" aria-label="Primary navigation">
+    <a class="site-logo" href="index.html">Bosnia and Herzegovina</a>
+    <nav class="site-nav" aria-label="Main menu">
+      <a href="index.html">Intro</a>
+      <a href="bridge.html">Bridge</a>
+      <a href="bazaar.html">Bazaar</a>
+      <a href="routes.html" aria-current="page">Routes</a>
+    </nav>
+    <button class="language-switcher" type="button" aria-label="Change language" aria-expanded="false" aria-controls="lang-menu">
+      <span>EN</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <div class="lang-menu" id="lang-menu" hidden>
+      <p class="lang-current"><span>English</span><span aria-hidden="true">✓</span></p>
+      <p class="lang-note">This guide is only available in English for now.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero hero-routes" aria-labelledby="page-title">
+      <img class="layer layer-sky" data-depth="0.35" src="https://motionsites.org/assets/prompt-media/ee40c389c0481c86a909.png" alt="" />
+      <div class="hero-scrim"></div>
+      <div class="page-hero-copy" data-depth="0.5">
+        <p class="page-hero-kicker">Walks, trains and day trips</p>
+        <h1 class="page-hero-title" id="page-title">Routes</h1>
+      </div>
+      <img class="layer layer-mountains" data-depth="0.14" src="https://motionsites.org/assets/prompt-media/b5ee731d6c1d435c0267.png" alt="" />
+      <img class="layer layer-front" data-depth="-0.04" src="https://motionsites.org/assets/prompt-media/1da38e873dbf652f7c7b.png" alt="" />
+    </section>
+
+    <section class="section" aria-label="About these routes">
+      <div class="wrap">
+        <div class="page-intro">
+          <p class="lede">Mostar is small enough to cross on foot in an afternoon, and well placed for the valley around it.</p>
+          <p class="body-text">Start with the old town walk. Then use the city as a base for a cave spring, a hill village and a ring of waterfalls, all within an hour's drive, or take the train north to Sarajevo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="walk" aria-labelledby="walk-title">
+      <div class="wrap walk">
+        <div class="walk-aside">
+          <h2 class="section-title" id="walk-title">The old town walk.</h2>
+          <p class="body-text" style="margin-top: 24px">About two hours at an easy pace, including the minaret climb. Mostly pedestrian, with cobbles and some steep steps.</p>
+        </div>
+        <ol class="walk-list">
+          <li>
+            <div>
+              <h3>Spanish Square</h3>
+              <p>Start on the west bank among the Austro-Hungarian buildings, including the striped facade of the Gymnasium.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Crooked Bridge</h3>
+              <p>Head down toward the river and the Radobolja stream, where a small stone arch crosses the water.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Stari Most</h3>
+              <p>Cross slowly. Stop at the top of the arch to look up and down the Neretva.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Kujundžiluk</h3>
+              <p>Follow the old bazaar lane along the east bank, past the copper workshops.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Koski Mehmed Pasha Mosque</h3>
+              <p>Climb the minaret for the classic view back to the bridge.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Karađoz Bey Mosque</h3>
+              <p>Finish in the shaded courtyard of this 16th-century mosque, a short walk further into the east bank.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="day-trips" aria-labelledby="trips-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="trips-title">Out along the valley.</h2>
+          <p>Four days out from Mostar. Choose one to see where it lies.</p>
+        </div>
+        <div class="trips" data-trips>
+          <figure class="trip-map">
+            <svg viewBox="0 0 600 640" aria-hidden="true" focusable="false">
+              <path class="map-river" d="M232 0 C 262 110, 292 200, 300 300 C 306 380, 344 452, 334 548 C 330 590, 318 620, 312 640" />
+              <path class="map-route" data-trip="sarajevo" d="M300 300 C 292 220, 266 140, 300 104 C 360 64, 460 70, 540 70" />
+              <path class="map-route" data-trip="blagaj" d="M300 300 C 330 312, 350 326, 372 348" />
+              <path class="map-route" data-trip="pocitelj" d="M300 300 C 310 380, 334 440, 338 500" />
+              <path class="map-route" data-trip="kravica" d="M300 300 C 250 360, 200 440, 152 520" />
+
+              <g class="map-point map-home">
+                <circle cx="300" cy="300" r="10" />
+                <text x="284" y="290" text-anchor="end">Mostar</text>
+              </g>
+              <g class="map-point" data-trip="blagaj">
+                <circle cx="372" cy="348" r="8" />
+                <text x="392" y="354">Blagaj</text>
+              </g>
+              <g class="map-point" data-trip="pocitelj">
+                <circle cx="338" cy="500" r="8" />
+                <text x="358" y="506">Počitelj</text>
+              </g>
+              <g class="map-point" data-trip="kravica">
+                <circle cx="152" cy="520" r="8" />
+                <text x="138" y="526" text-anchor="end">Kravica</text>
+              </g>
+              <g class="map-point" data-trip="sarajevo">
+                <circle cx="540" cy="70" r="8" />
+                <text x="532" y="44" text-anchor="end">Sarajevo</text>
+              </g>
+              <text class="map-label-small" x="262" y="64" fill="rgba(253,241,225,0.6)" font-family="Inter, system-ui, sans-serif">Neretva</text>
+              <g transform="translate(548 600)" fill="none" stroke="rgba(253,241,225,0.6)" stroke-width="2">
+                <path d="M0 14 L0 -14 M-7 -6 L0 -14 L7 -6" />
+              </g>
+              <text class="map-label-small" x="542" y="578" fill="rgba(253,241,225,0.6)" font-family="Inter, system-ui, sans-serif">N</text>
+            </svg>
+            <figcaption>Schematic map, not to scale. Distances are approximate road distances from Mostar.</figcaption>
+          </figure>
+
+          <ul class="trip-list">
+            <li>
+              <button class="trip-button" type="button" data-trip="blagaj" aria-expanded="true" aria-controls="trip-blagaj">
+                <span class="trip-name">Blagaj</span>
+                <span class="trip-distance">About 12 km south-east</span>
+              </button>
+              <p class="trip-detail" id="trip-blagaj">A dervish house at the foot of a cliff, where the Buna river rises from a cave as one of the largest karst springs in Europe.<span class="trip-tip">Allow half a day. Riverside terraces sit right beside the spring.</span></p>
+            </li>
+            <li>
+              <button class="trip-button" type="button" data-trip="pocitelj" aria-expanded="false" aria-controls="trip-pocitelj">
+                <span class="trip-name">Počitelj</span>
+                <span class="trip-distance">About 30 km south</span>
+              </button>
+              <p class="trip-detail" id="trip-pocitelj" hidden>A walled Ottoman village climbing a hillside above the Neretva, with a mosque, stone houses and a fortress tower at the top.<span class="trip-tip">The paths are steep. Go early or late in summer.</span></p>
+            </li>
+            <li>
+              <button class="trip-button" type="button" data-trip="kravica" aria-expanded="false" aria-controls="trip-kravica">
+                <span class="trip-name">Kravica</span>
+                <span class="trip-distance">About 40 km south-west</span>
+              </button>
+              <p class="trip-detail" id="trip-kravica" hidden>A wide horseshoe of waterfalls on the Trebižat river, falling into a green pool.<span class="trip-tip">Many visitors swim there in summer. Check the current rules and entry fee on arrival.</span></p>
+            </li>
+            <li>
+              <button class="trip-button" type="button" data-trip="sarajevo" aria-expanded="false" aria-controls="trip-sarajevo">
+                <span class="trip-name">Sarajevo by train</span>
+                <span class="trip-distance">About 130 km north-east</span>
+              </button>
+              <p class="trip-detail" id="trip-sarajevo" hidden>The railway follows the Neretva north through Jablanica and Konjic, through gorges and along lakes, in about two hours.<span class="trip-tip">Trains are infrequent, so check the current timetable before you plan the day.</span></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="arrive" aria-labelledby="arrive-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="arrive-title">Getting here.</h2>
+          <p>Most visitors arrive overland, from Sarajevo or from the Croatian coast.</p>
+        </div>
+        <dl class="notes">
+          <div>
+            <dt>By train</dt>
+            <dd>From Sarajevo along the Neretva valley, in about two hours. It is the most scenic way in.</dd>
+          </div>
+          <div>
+            <dt>By bus</dt>
+            <dd>Regular coaches run from Sarajevo, and from Split and Dubrovnik in Croatia. Allow a few hours from the coast, and carry your passport for the border.</dd>
+          </div>
+          <div>
+            <dt>By air</dt>
+            <dd>Mostar's small airport has a limited, mostly seasonal timetable. Sarajevo, Split and Dubrovnik have more connections.</dd>
+          </div>
+          <div>
+            <dt>Around town</dt>
+            <dd>On foot. The old town is pedestrian, and most sights are within twenty minutes' walk of the bridge.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section section-stone" id="seasons" aria-labelledby="seasons-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="seasons-title">When to go.</h2>
+          <p>Mostar is one of the warmest cities in the country. The shoulder seasons are the sweet spot.</p>
+        </div>
+        <dl class="seasons">
+          <div>
+            <dt>Spring<span class="season-months">April to June</span></dt>
+            <dd>Green hills, a full river and comfortable walking weather.</dd>
+          </div>
+          <div>
+            <dt>Summer<span class="season-months">July and August</span></dt>
+            <dd>Hot, often above 35 °C, and busy at midday. The season for the diving competition.</dd>
+          </div>
+          <div>
+            <dt>Autumn<span class="season-months">September and October</span></dt>
+            <dd>Warm days, softer light and thinner crowds on the bridge.</dd>
+          </div>
+          <div>
+            <dt>Winter<span class="season-months">November to March</span></dt>
+            <dd>Quiet and cool, with shorter opening hours in some places.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="before" aria-labelledby="before-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="before-title">Before you go.</h2>
+          <p>The practical details, in one place.</p>
+        </div>
+        <dl class="notes">
+          <div>
+            <dt>Currency</dt>
+            <dd>The convertible mark (KM, or BAM). Cards are common in hotels and restaurants; carry cash for stalls and small cafés.</dd>
+          </div>
+          <div>
+            <dt>Language</dt>
+            <dd>Bosnian, Croatian and Serbian are all spoken. English is widely understood in the old town.</dd>
+          </div>
+          <div>
+            <dt>Power</dt>
+            <dd>230 V, with European two-pin plugs (types C and F).</dd>
+          </div>
+        </dl>
+        <div class="callout" role="note">
+          <h3>Outside the city</h3>
+          <p>Stay on paved roads and marked paths in the countryside. Some rural areas of Bosnia and Herzegovina still contain landmines from the 1990s war. Never enter areas marked with red warning signs.</p>
+        </div>
+      </div>
+    </section>
+
+    <a class="next-band" href="bridge.html">
+      <img class="nb-sky" src="https://motionsites.org/assets/prompt-media/ee40c389c0481c86a909.png" alt="" />
+      <img class="nb-front" src="https://motionsites.org/assets/prompt-media/9467466de651dd1691cb.png" alt="" />
+      <span class="nb-copy">
+        <span class="nb-kicker">Back to where it starts</span>
+        <span class="nb-title">The bridge</span>
+      </span>
+    </a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <p class="footer-title">Mostar, on the Neretva.</p>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="index.html">Intro</a>
+          <a href="bridge.html">Bridge</a>
+          <a href="bazaar.html">Bazaar</a>
+          <a href="routes.html">Routes</a>
+        </nav>
+        <p class="footer-note">Opening hours, prices and timetables change. Check them locally before you set out.</p>
+      </div>
+      <div class="footer-base">
+        <p>An independent visitor guide to Mostar.</p>
+        <p>Bosnia and Herzegovina</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

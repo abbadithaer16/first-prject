@@ -7,7 +7,9 @@
   <meta name="description" content="A cinematic three-screen scroll story for Mostar city." />
   <link rel="icon" href="data:," />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="site.css" />
   <script src="script.js" defer></script>
+  <script src="site.js" defer></script>
 </head>
 <body>
   <main class="site-shell">
@@ -20,14 +22,18 @@
             <a class="site-logo" href="#cinema">Bosnia and Herzegovina</a>
             <nav class="site-nav" aria-label="Main menu">
               <a href="#cinema">Intro</a>
-              <a href="#bridge">Bridge</a>
-              <a href="#bazaar">Bazaar</a>
-              <a href="#routes">Routes</a>
+              <a href="bridge.html">Bridge</a>
+              <a href="bazaar.html">Bazaar</a>
+              <a href="routes.html">Routes</a>
             </nav>
-            <button class="language-switcher" type="button" aria-label="Change language">
+            <button class="language-switcher" type="button" aria-label="Change language" aria-expanded="false" aria-controls="lang-menu">
               <span>EN</span>
               <span aria-hidden="true">⌄</span>
             </button>
+            <div class="lang-menu" id="lang-menu" hidden>
+              <p class="lang-current"><span>English</span><span aria-hidden="true">✓</span></p>
+              <p class="lang-note">This guide is only available in English for now.</p>
+            </div>
           </header>
 
           <div class="back-stack">
@@ -35,31 +41,31 @@
 
             <section class="sights-slider" aria-label="Mostar sights slider">
               <div class="sights-track">
-                <article class="sight-card" tabindex="0" role="button" aria-label="Open Stari Most card">
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open Stari Most card" data-href="bridge.html">
                   <span class="sight-kicker">Old Bridge</span>
                   <img class="sight-pin" src="https://motionsites.org/assets/prompt-media/d1cfcf0685be2e1de9e1.png" alt="" />
                   <h3>Stari Most</h3>
                   <p>The stone arch over the Neretva and Mostar's main landmark.</p>
                 </article>
-                <article class="sight-card" tabindex="0" role="button" aria-label="Open Kujundziluk card">
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open Kujundziluk card" data-href="bazaar.html#kujundziluk">
                   <span class="sight-kicker">Bazaar Street</span>
                   <img class="sight-pin" src="https://motionsites.org/assets/prompt-media/03543f15ab323ac1597a.png" alt="" />
                   <h3>Kujundziluk</h3>
                   <p>Copper shops, souvenirs, and the old bazaar lane by the bridge.</p>
                 </article>
-                <article class="sight-card" tabindex="0" role="button" aria-label="Open Koski Mehmed Pasha Mosque card">
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open Koski Mehmed Pasha Mosque card" data-href="bazaar.html#koski">
                   <span class="sight-kicker">Viewpoint</span>
                   <img class="sight-pin" src="https://motionsites.org/assets/prompt-media/107f150ddabe925a15d3.png" alt="" />
                   <h3>Koski Mehmed Pasha Mosque</h3>
                   <p>A classic minaret view back toward Stari Most and the river.</p>
                 </article>
-                <article class="sight-card" tabindex="0" role="button" aria-label="Open Kajtaz House card">
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open Kajtaz House card" data-href="bazaar.html#kajtaz">
                   <span class="sight-kicker">Ottoman House</span>
                   <img class="sight-pin" src="https://motionsites.org/assets/prompt-media/d1cfcf0685be2e1de9e1.png" alt="" />
                   <h3>Kajtaz House</h3>
                   <p>A preserved residential house showing Mostar's Ottoman layers.</p>
                 </article>
-                <article class="sight-card" tabindex="0" role="button" aria-label="Open War Photo Exhibition card">
+                <article class="sight-card" tabindex="0" role="button" aria-label="Open War Photo Exhibition card" data-href="bazaar.html#war-photo">
                   <span class="sight-kicker">Museum</span>
                   <img class="sight-pin" src="https://motionsites.org/assets/prompt-media/03543f15ab323ac1597a.png" alt="" />
                   <h3>War Photo Exhibition</h3>
@@ -113,13 +119,73 @@
         <section class="story-panel story-panel-bazaar" aria-label="Old town details">
           <h2>The bazaar keeps Mostar close.</h2>
           <p>Stone lanes, mosque courtyards, copper stalls, and riverside coffee stay within a short walk of Stari Most.</p>
-          <button class="note-button" type="button">
+          <a class="note-button" href="bazaar.html#notes">
             <span aria-hidden="true">↗</span>
             <span>Open old town notes</span>
-          </button>
+          </a>
         </section>
       </div>
     </section>
+
+    <section class="home-next" aria-labelledby="home-next-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title" id="home-next-title">Three ways into the city.</h2>
+          <p>Start at the bridge, lose an afternoon in the bazaar, then follow the river out of town.</p>
+        </div>
+        <ul class="paths">
+          <li>
+            <a class="path-row" href="bridge.html">
+              <span class="path-media"><img class="pm-bridge" src="https://motionsites.org/assets/prompt-media/9467466de651dd1691cb.png" alt="" /></span>
+              <span class="path-text">
+                <span class="path-kicker">The Old Bridge</span>
+                <span class="path-title">Stari Most</span>
+                <span class="path-line">Built in 1566, brought down in 1993, rebuilt stone by stone. The history, the divers and the best views.</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="path-row" href="bazaar.html">
+              <span class="path-media"><img src="https://motionsites.org/assets/prompt-media/5b16d471b78820601ffb.png" alt="" /></span>
+              <span class="path-text">
+                <span class="path-kicker">The old town</span>
+                <span class="path-title">The bazaar</span>
+                <span class="path-line">Copper lanes, mosque courtyards and Ottoman houses on both banks, plus what to eat and drink.</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="path-row" href="routes.html">
+              <span class="path-media"><img src="https://motionsites.org/assets/prompt-media/b5ee731d6c1d435c0267.png" alt="" /></span>
+              <span class="path-text">
+                <span class="path-kicker">Walks and day trips</span>
+                <span class="path-title">Routes</span>
+                <span class="path-line">An old town walk, the Neretva valley, the train to Sarajevo and everything to know before you go.</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <p class="footer-title">Mostar, on the Neretva.</p>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="index.html">Intro</a>
+          <a href="bridge.html">Bridge</a>
+          <a href="bazaar.html">Bazaar</a>
+          <a href="routes.html">Routes</a>
+        </nav>
+        <p class="footer-note">Opening hours, prices and timetables change. Check them locally before you set out.</p>
+      </div>
+      <div class="footer-base">
+        <p>An independent visitor guide to Mostar.</p>
+        <p>Bosnia and Herzegovina</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

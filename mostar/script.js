@@ -204,12 +204,17 @@
     sightCards = Array.from(sightsTrack.querySelectorAll(".sight-card"));
     activeSight = originalSightCount;
 
+    // A card opens its page; without a link it falls back to selecting itself.
+    const openSightCard = (card) => {
+      if (card.dataset.href) window.location.href = card.dataset.href;
+      else selectSightCard(card);
+    };
     sightCards.forEach((card) => {
-      card.addEventListener("click", () => selectSightCard(card));
+      card.addEventListener("click", () => openSightCard(card));
       card.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          selectSightCard(card);
+          openSightCard(card);
         }
       });
     });
