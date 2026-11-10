@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="A cinematic 3D presentation about Formula One: its history, iconic teams and drivers, how a race weekend works, and the cars and technology." />
+  <title>Formula One — A 3D Presentation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#deck">Skip to the presentation text</a>
+
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="fallback-art" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div id="pins" class="pins" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="mark" href="#lights" data-goto="lights" aria-label="Formula One, back to the first slide">
+      <span class="mark__f">F1</span><span class="mark__t">A presentation</span>
+    </a>
+    <p class="topbar__chapter" id="chapterLabel">Introduction</p>
+    <div class="topbar__tools">
+      <button class="tool" id="helpBtn" type="button" aria-haspopup="dialog" aria-controls="help" title="Keyboard shortcuts (?)">
+        <span aria-hidden="true">?</span><span class="sr-only">Keyboard shortcuts</span>
+      </button>
+      <button class="tool" id="fsBtn" type="button" aria-pressed="false" title="Fullscreen (F)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
+        <span class="sr-only" id="fsLabel">Enter fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="deck" class="deck" tabindex="-1">
+
+    <!-- 0 · Title -->
+    <section class="slide slide--title" id="lights" data-chapter="intro" aria-labelledby="t-lights">
+      <div class="panel">
+        <h1 class="display" id="t-lights" data-split>Formula One</h1>
+        <p class="lede" data-reveal>Seventy-six seasons of the fastest circuit racing on earth: where it began, who made it famous, how a race weekend unfolds, and what is inside the car.</p>
+        <div class="row" data-reveal>
+          <button class="btn btn--primary" type="button" data-next>Start the presentation</button>
+          <p class="hint">Arrow keys, swipe, or the controls below</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 · History: 1950 -->
+    <section class="slide" id="silverstone-1950" data-chapter="history" aria-labelledby="t-1950">
+      <div class="panel">
+        <p class="kicker" data-reveal>History</p>
+        <h2 class="h2" id="t-1950" data-reveal>13 May 1950. Silverstone.</h2>
+        <p data-reveal>The first round of the new World Drivers’ Championship ran on a former wartime airfield in England. Giuseppe Farina won it in an Alfa Romeo 158 and, by the end of the season, became the first world champion.</p>
+        <dl class="facts" data-reveal>
+          <div><dt>1950</dt><dd>First World Championship season</dd></div>
+          <div><dt>1958</dt><dd>Constructors’ Championship added, won by Vanwall</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2 · History: eras -->
+    <section class="slide" id="eras" data-chapter="history" aria-labelledby="t-eras">
+      <div class="panel panel--wide">
+        <p class="kicker" data-reveal>History</p>
+        <h2 class="h2" id="t-eras" data-reveal>Every era rewrote the rules.</h2>
+        <p class="small" data-reveal>Choose a period to fly to its marker on the circuit.</p>
+        <div class="eras" role="group" aria-label="Eras of Formula One" data-reveal>
+          <button type="button" class="chip" data-era="0" aria-pressed="false">1950s</button>
+          <button type="button" class="chip" data-era="1" aria-pressed="false">1960s</button>
+          <button type="button" class="chip" data-era="2" aria-pressed="false">1970s</button>
+          <button type="button" class="chip" data-era="3" aria-pressed="false">1980s</button>
+          <button type="button" class="chip" data-era="4" aria-pressed="false">1990s</button>
+          <button type="button" class="chip" data-era="5" aria-pressed="false">2000–13</button>
+          <button type="button" class="chip" data-era="6" aria-pressed="false">2014–25</button>
+          <button type="button" class="chip" data-era="7" aria-pressed="false">2026</button>
+        </div>
+        <div class="detail" id="eraDetail" aria-live="polite" data-reveal>
+          <h3 class="h3">The whole story at a glance</h3>
+          <p>Eight markers stand around the circuit, one for each period. Pick one to see what changed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Teams -->
+    <section class="slide" id="teams" data-chapter="teams" aria-labelledby="t-teams">
+      <div class="panel">
+        <p class="kicker" data-reveal>Teams and drivers</p>
+        <h2 class="h2" id="t-teams" data-reveal>Colours you recognise at 300 km/h.</h2>
+        <div class="teams" role="group" aria-label="Choose a team to repaint the car" data-reveal>
+          <button type="button" class="swatch" data-team="ferrari" aria-pressed="false"><i style="--c:#b5121b"></i>Ferrari</button>
+          <button type="button" class="swatch" data-team="mclaren" aria-pressed="false"><i style="--c:#ff7a00"></i>McLaren</button>
+          <button type="button" class="swatch" data-team="williams" aria-pressed="false"><i style="--c:#1d3f8f"></i>Williams</button>
+          <button type="button" class="swatch" data-team="mercedes" aria-pressed="false"><i style="--c:#c3c7cc"></i>Mercedes</button>
+          <button type="button" class="swatch" data-team="redbull" aria-pressed="false"><i style="--c:#23305a"></i>Red Bull</button>
+        </div>
+        <div class="detail" id="teamDetail" aria-live="polite" data-reveal></div>
+        <p class="note" data-reveal>Colours are simplified impressions of each team’s identity, not exact liveries.</p>
+      </div>
+    </section>
+
+    <!-- 4 · Drivers -->
+    <section class="slide" id="drivers" data-chapter="teams" aria-labelledby="t-drivers">
+      <div class="panel panel--wide">
+        <p class="kicker" data-reveal>Teams and drivers</p>
+        <h2 class="h2" id="t-drivers" data-reveal>Champions who defined their eras.</h2>
+        <p class="small" data-reveal>Each column’s height is that driver’s number of world titles.</p>
+        <ol class="drivers" data-reveal>
+          <li><button type="button" data-driver="0"><span class="drivers__n">Juan Manuel Fangio</span><span class="drivers__t">5 titles</span></button></li>
+          <li><button type="button" data-driver="1"><span class="drivers__n">Jim Clark</span><span class="drivers__t">2 titles</span></button></li>
+          <li><button type="button" data-driver="2"><span class="drivers__n">Niki Lauda</span><span class="drivers__t">3 titles</span></button></li>
+          <li><button type="button" data-driver="3"><span class="drivers__n">Alain Prost</span><span class="drivers__t">4 titles</span></button></li>
+          <li><button type="button" data-driver="4"><span class="drivers__n">Ayrton Senna</span><span class="drivers__t">3 titles</span></button></li>
+          <li><button type="button" data-driver="5"><span class="drivers__n">Michael Schumacher</span><span class="drivers__t">7 titles</span></button></li>
+          <li><button type="button" data-driver="6"><span class="drivers__n">Lewis Hamilton</span><span class="drivers__t">7 titles</span></button></li>
+          <li><button type="button" data-driver="7"><span class="drivers__n">Max Verstappen</span><span class="drivers__t">4 titles</span></button></li>
+        </ol>
+        <div class="detail detail--short" id="driverDetail" aria-live="polite" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- 5 · Weekend -->
+    <section class="slide" id="race-weekend" data-chapter="weekend" aria-labelledby="t-weekend">
+      <div class="panel">
+        <p class="kicker" data-reveal>The race weekend</p>
+        <h2 class="h2" id="t-weekend" data-reveal>Three days, one result.</h2>
+        <ol class="schedule" data-reveal>
+          <li><b>Friday</b><span>Practice 1 and 2. Teams test set-ups, tyres and race pace.</span></li>
+          <li><b>Saturday</b><span>Practice 3, then qualifying decides the starting order.</span></li>
+          <li><b>Sunday</b><span>The Grand Prix: about 305 km, with a two-hour limit.</span></li>
+        </ol>
+        <p class="note" data-reveal>On Sprint weekends, Friday has one practice session and Sprint Qualifying, and Saturday adds a 100 km Sprint race before qualifying.</p>
+      </div>
+    </section>
+
+    <!-- 6 · Qualifying -->
+    <section class="slide" id="qualifying" data-chapter="weekend" aria-labelledby="t-quali">
+      <div class="panel">
+        <p class="kicker" data-reveal>The race weekend</p>
+        <h2 class="h2" id="t-quali" data-reveal>Qualifying is a knockout.</h2>
+        <p data-reveal>Three timed sessions, each shorter than the last. The slowest drivers drop out of Q1 and Q2; the fastest ten fight for pole position in Q3.</p>
+        <ol class="stages" data-reveal>
+          <li data-stage="1"><b>Q1</b><span>18 minutes</span></li>
+          <li data-stage="2"><b>Q2</b><span>15 minutes</span></li>
+          <li data-stage="3"><b>Q3</b><span>12 minutes · top ten</span></li>
+        </ol>
+        <button class="btn" type="button" id="qualiReplay" data-reveal>Replay the knockout</button>
+      </div>
+    </section>
+
+    <!-- 7 · Race -->
+    <section class="slide" id="race-day" data-chapter="weekend" aria-labelledby="t-race">
+      <div class="panel">
+        <p class="kicker" data-reveal>The race weekend</p>
+        <h2 class="h2" id="t-race" data-reveal>Sunday is about strategy.</h2>
+        <p data-reveal>Pirelli brings three dry compounds to each race. In a dry race every driver must use at least two of them, so every car stops at least once. A good pit stop keeps the car stationary for under three seconds.</p>
+        <ul class="tyres" data-reveal>
+          <li><i style="--c:var(--tyre-soft)"></i>Soft</li>
+          <li><i style="--c:var(--tyre-medium)"></i>Medium</li>
+          <li><i style="--c:var(--tyre-hard)"></i>Hard</li>
+          <li><i style="--c:var(--tyre-inter)"></i>Intermediate</li>
+          <li><i style="--c:var(--tyre-wet)"></i>Wet</li>
+        </ul>
+        <figure class="points" data-reveal>
+          <figcaption>Points for the top ten finishers</figcaption>
+          <ol aria-label="Points from first to tenth">
+            <li style="--p:25">25</li><li style="--p:18">18</li><li style="--p:15">15</li><li style="--p:12">12</li><li style="--p:10">10</li>
+            <li style="--p:8">8</li><li style="--p:6">6</li><li style="--p:4">4</li><li style="--p:2">2</li><li style="--p:1">1</li>
+          </ol>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 8 · Anatomy -->
+    <section class="slide" id="anatomy" data-chapter="tech" aria-labelledby="t-anatomy">
+      <div class="panel">
+        <p class="kicker" data-reveal>Cars and technology</p>
+        <h2 class="h2" id="t-anatomy" data-reveal>Anatomy of a Grand Prix car.</h2>
+        <div class="parts" role="group" aria-label="Car parts" data-reveal>
+          <button type="button" class="chip" data-part="frontWing" aria-pressed="false">Front wing</button>
+          <button type="button" class="chip" data-part="chassis" aria-pressed="false">Survival cell</button>
+          <button type="button" class="chip" data-part="halo" aria-pressed="false">Halo</button>
+          <button type="button" class="chip" data-part="power" aria-pressed="false">Power unit</button>
+          <button type="button" class="chip" data-part="floor" aria-pressed="false">Floor</button>
+          <button type="button" class="chip" data-part="rearWing" aria-pressed="false">Rear wing</button>
+          <button type="button" class="chip" data-part="tyres" aria-pressed="false">Tyres</button>
+        </div>
+        <div class="detail" id="partDetail" aria-live="polite" data-reveal>
+          <h3 class="h3">Pulled apart</h3>
+          <p>The car is shown with its main systems separated. Choose a part, or select a marker on the model.</p>
+        </div>
+        <p class="note" data-reveal>Stylised model, simplified for clarity.</p>
+      </div>
+    </section>
+
+    <!-- 9 · Power -->
+    <section class="slide" id="power-unit" data-chapter="tech" aria-labelledby="t-power">
+      <div class="panel">
+        <p class="kicker" data-reveal>Cars and technology</p>
+        <h2 class="h2" id="t-power" data-reveal>Half combustion, half electric.</h2>
+        <p data-reveal>The 2026 power unit keeps a 1.6-litre turbocharged V6, but drops the complex heat-recovery generator. In its place, the electric motor’s output almost triples, giving a roughly even split between combustion and electric power.</p>
+        <dl class="stats" data-reveal>
+          <div><dt>1.6 L</dt><dd>V6 turbo engine</dd></div>
+          <div><dt>350 kW</dt><dd>Electric motor output</dd></div>
+          <div><dt>100%</dt><dd>Sustainable fuel</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 10 · Aero -->
+    <section class="slide" id="aerodynamics" data-chapter="tech" aria-labelledby="t-aero">
+      <div class="panel">
+        <p class="kicker" data-reveal>Cars and technology</p>
+        <h2 class="h2" id="t-aero" data-reveal>Air is the invisible opponent.</h2>
+        <p data-reveal>Wings and the floor press the car into the track so it can corner faster, but that grip costs drag. Since 2026, wing elements move: closed for grip in corners, open for speed on the straights.</p>
+        <button class="btn btn--toggle" type="button" id="aeroBtn" aria-pressed="false" data-reveal>
+          <span class="btn__dot" aria-hidden="true"></span><span id="aeroLabel">Switch to straight-line mode</span>
+        </button>
+        <p class="small" id="aeroState" aria-live="polite" data-reveal>Corner mode: wings closed, maximum downforce.</p>
+      </div>
+    </section>
+
+    <!-- 11 · Safety -->
+    <section class="slide" id="safety" data-chapter="tech" aria-labelledby="t-safety">
+      <div class="panel">
+        <p class="kicker" data-reveal>Cars and technology</p>
+        <h2 class="h2" id="t-safety" data-reveal>Built to bring the driver home.</h2>
+        <p data-reveal>After the deaths of Roland Ratzenberger and Ayrton Senna at Imola in 1994, the sport rebuilt its approach to safety: stronger crash structures, higher cockpit sides, wheel tethers and, from 2018, the titanium halo.</p>
+        <dl class="stats" data-reveal>
+          <div><dt>2018</dt><dd>Halo made mandatory</dd></div>
+          <div><dt>1,000 °C+</dt><dd>Carbon brake temperatures</dd></div>
+          <div><dt>~5 g</dt><dd>Peak loads under braking and in fast corners</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 12 · Finale -->
+    <section class="slide slide--finale" id="lights-out" data-chapter="finale" aria-labelledby="t-finale">
+      <div class="panel">
+        <h2 class="display display--md" id="t-finale" data-split>Lights out.</h2>
+        <p class="lede" data-reveal>Five red lights come on one by one, a second apart. After a short, deliberately unpredictable pause they all go out, and the race begins.</p>
+        <div class="row" data-reveal>
+          <button class="btn btn--primary" type="button" id="startBtn">Run the start again</button>
+          <button class="btn" type="button" data-goto="lights">Back to the beginning</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="dock" aria-label="Presentation controls">
+    <button class="dock__arrow" type="button" id="prevBtn" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <ol class="dock__chapters" id="chapters"></ol>
+    <p class="dock__count" aria-hidden="true"><span id="countNow">01</span><span class="dock__of">/</span><span id="countAll">13</span></p>
+    <button class="dock__arrow" type="button" id="nextBtn" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+    </button>
+  </nav>
+
+  <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="help" id="help" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
+    <div class="help__card">
+      <h2 class="h3" id="helpTitle">Keyboard shortcuts</h2>
+      <dl class="keys">
+        <div><dt><kbd>→</kbd> <kbd>Space</kbd> <kbd>Page Down</kbd></dt><dd>Next slide</dd></div>
+        <div><dt><kbd>←</kbd> <kbd>Page Up</kbd></dt><dd>Previous slide</dd></div>
+        <div><dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>First or last slide</dd></div>
+        <div><dt><kbd>F</kbd></dt><dd>Toggle fullscreen</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Close this panel or leave fullscreen</dd></div>
+        <div><dt><kbd>?</kbd></dt><dd>Show these shortcuts</dd></div>
+      </dl>
+      <p class="small">On touch screens, swipe left or right outside the text panel.</p>
+      <button class="btn" type="button" id="helpClose">Close</button>
+    </div>
+  </div>
+
+  <noscript><p class="noscript">This presentation needs JavaScript for navigation. All slide text is still readable above.</p></noscript>
+
+  <script src="vendor/gsap-3.12.5.min.js"></script>
+  <script src="vendor/three-0.149.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
