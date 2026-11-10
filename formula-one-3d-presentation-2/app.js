@@ -313,7 +313,7 @@
       const fg = new THREE.ExtrudeGeometry(fs, { depth: 0.04, bevelEnabled: false });
       fg.rotateX(Math.PI / 2); fg.translate(0, 0.09, 0);
       const floor = new THREE.Group(); parts.floor = floor; car.add(floor);
-      const floorMat = new THREE.MeshStandardMaterial({ color: 0x0c0c0e, metalness: 0.1, roughness: 0.85, envMapIntensity: 0.3 });
+      const floorMat = new THREE.MeshStandardMaterial({ color: 0x0c0c0e, metalness: 0, roughness: 0.9, envMapIntensity: 0.05 });
       floor.add(new THREE.Mesh(fg, floorMat));
       floor.add(box(1.0, 0.02, 0.45, carbon, 0, 0.14, -2.02, 0.35)); // diffuser
 
